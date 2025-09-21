@@ -7,14 +7,28 @@ If the number is between 8 and 10 assigns "scissors" to computerChoice and retur
 let computerChoice
 function getComputerChoice() {
     let num = Math.floor((Math.random()) * 10);
-    console.log(num);
     if (num < 4) {
-        console.log(computerChoice = "Rock");
+        return computerChoice = "Rock";
     } else if (num < 7) {
-        console.log(computerChoice = "Paper");
+        return computerChoice = "Paper";
     } else {
-        console.log(computerChoice = "Scissors");
+        return computerChoice = "Scissors";
     }
 }
 
 getComputerChoice();
+
+/* Create a variable called humanChoice
+Create a function that prompts the user for input
+Checks if the input is valid (one of rock, paper, or scissors)
+If valid, stores the input in humanChoice
+If invalid, does nothing */
+
+let humanChoice
+function getHumanChoice(input) {
+    input = prompt("rock, paper or scissors?", "")
+    if ((input === "rock") || (input === "paper") || (input === "scissors")) return input
+        else return;
+}
+
+getHumanChoice();
