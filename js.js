@@ -47,57 +47,88 @@ if user: scissors com: rock, return lose
 if user draws the same as the computer, return tie
 increment winner score */
 
-function playRound(humanChoice, computerChoice) {
-    function tie() {
-        console.log("It's a tie! try again.")
+
+/* Declare a function named playGame that
+Runs the playRound five times,
+Each time keeping the scores,
+At the end of five rounds compares humanScore to computerScore,
+If the humanScore is bigger, declares the user as the winner,
+If the computerScore is bigger, declares the computer as the winner
+*/
+
+function playGame() {
+    let rounds = 0;
+    function playRound(humanChoice, computerChoice) {
+        function tie() {
+            console.log("It's a tie! try again.")
+            rounds++
+        }
+        
+        let user = humanChoice.toLowerCase();
+        let com = computerChoice.toLowerCase();
+        
+        if (user === "rock" && com === "scissors") {
+            humanScore ++;
+            console.log("You win! rock beats scissors")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+        
+        } else if (user === "rock" && com === "paper") {
+            computerScore ++;
+            console.log("You lose! paper beats rock")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+        
+        } else if ( user === "paper" && com === "rock") {
+            humanScore ++;
+            console.log("You win! paper beats rock.")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+    
+        
+        } else if (user === "paper" && com === "scissors") {
+            computerScore ++;
+            console.log("You loser! scissors beat paper")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+                
+        } else if (user === "scissors" && com === "paper") {
+            humanScore ++;
+            console.log("You win! scissors beat paper")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+        
+        } else if (user === "scissors" && com === "rock") {
+            computerScore ++;
+            console.log("You lose! rock beats scissors!")
+            console.log("your score is: " + humanScore);
+            console.log("the computer's score is: " + computerScore);
+            rounds++
+        
+        } else {
+            tie();
+        }
     }
     
-    let user = humanChoice.toLowerCase();
-    let com = computerChoice.toLowerCase();
+    for (let i = 0; i < 5; i++) {
+        i = rounds;
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
     
-    if (user === "rock" && com === "scissors") {
-        humanScore ++;
-        console.log("You win! rock beats scissors")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-    
-    } else if (user === "rock" && com === "paper") {
-        computerScore ++;
-        console.log("You lose! paper beats rock")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-    
-    } else if ( user === "paper" && com === "rock") {
-        humanScore ++;
-        console.log("You win! paper beats rock.")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-
-    
-    } else if (user === "paper" && com === "scissors") {
-        computerScore ++;
-        console.log("You loser! scissors beat paper")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-            
-    } else if (user === "scissors" && com === "paper") {
-        humanScore ++;
-        console.log("You win! scissors beat paper")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-    
-    } else if (user === "scissors" && com === "rock") {
-        computerScore ++;
-        console.log("You lose! rock beats scissors!")
-        console.log("your score is: " + humanScore);
-        console.log("the computer's score is: " + computerScore);
-    
+    if (computerScore > humanScore) {
+        console.log("the computer wins :(");
+    } else if (computerScore < humanScore) {
+        console.log("you win :)");
     } else {
-        tie();
+        console.log("it's a tie. Wanna play again? hit refresh")
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
