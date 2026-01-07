@@ -4,9 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js.js"></script>
+    <script src="js.js" defer></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+        }
+
+        #container {
+            border: solid black 1px;
+            border-radius: 5px;
+            background-color: rgb(246, 231, 248);
+            height: 15em;
+            padding: 1em;
+        }
+
+        button {
+            background-color: white;
+            box-shadow: 2px 2px;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 1em;
+            font-size: large;
+        }
+
+        button:active {
+            box-shadow: 1px 1px;
+        }
+
+        button:hover {
+            background-color: rgb(245, 169, 255);
+        }
+
+        button:disabled:hover {
+            background-color: white;
+        }
+        
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <p>Let's play! Choose an item and press the button:</p>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <div id="results"></div>
+    </div>
 </body>
 </html>
